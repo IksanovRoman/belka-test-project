@@ -19,10 +19,28 @@ class Concentrate(models.Model):
         ordering = ['id', ]
 
 class Month(models.Model):
-    name = models.CharField(max_length=15, verbose_name="Месяц", unique=True)
+    MONTHS = [
+        ('Январь', 'Январь'),
+        ('Февраль', 'Февраль'),
+        ('Март', 'Март'),
+        ('Апрель', 'Апрель'),
+        ('Май', 'Май'),
+        ('Июнь', 'Июнь'),
+        ('Июль', 'Июль'),
+        ('Август', 'Август'),
+        ('Сентябрь', 'Сентябрь'),
+        ('Октябрь', 'Октябрь'),
+        ('Ноябрь', 'Ноябрь'),
+        ('Декабрь', 'Декабрь'),
+    ]
+
+    month = models.CharField(max_length=8,
+                             choices=MONTHS,
+                             default="Январь",
+                             unique=True)
 
     def __str__(self):
-        return self.name
+        return self.month
 
     class Meta:
         verbose_name = "Месяц"

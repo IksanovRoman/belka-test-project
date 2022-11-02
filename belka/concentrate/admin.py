@@ -11,9 +11,9 @@ class ConcentrateAdmin(admin.ModelAdmin):
 
 
 class MonthAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
-    list_display_links = ('id', 'name')
-    search_fields = ('name',)
+    list_display = ('id', 'month')
+    list_display_links = ('id', 'month')
+    search_fields = ('month',)
 
 
 admin.site.register(Concentrate, ConcentrateAdmin)
