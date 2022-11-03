@@ -8,17 +8,7 @@ class Concentrate(models.Model):
     aluminum = models.DecimalField(max_digits=4, decimal_places=2, default=0, verbose_name='Содержание алюминия')
     calcium = models.DecimalField(max_digits=4, decimal_places=2, default=0, verbose_name='Содержание кальция')
     sulfur = models.DecimalField(max_digits=4, decimal_places=2, default=0, verbose_name='Содержание серы')
-    month = models.ForeignKey('Month', on_delete=models.PROTECT, verbose_name="Месяц")
 
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Концентрат"
-        verbose_name_plural = "Концентрат"
-        ordering = ['id', ]
-
-class Month(models.Model):
     MONTHS = [
         ('Январь', 'Январь'),
         ('Февраль', 'Февраль'),
@@ -37,12 +27,12 @@ class Month(models.Model):
     month = models.CharField(max_length=8,
                              choices=MONTHS,
                              default="Январь",
-                             unique=True)
+                             )
 
     def __str__(self):
-        return self.month
+        return self.name
 
     class Meta:
-        verbose_name = "Месяц"
-        verbose_name_plural = "Месяц"
+        verbose_name = "Концентрат"
+        verbose_name_plural = "Концентрат"
         ordering = ['id', ]

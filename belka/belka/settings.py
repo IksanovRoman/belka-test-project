@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'concentrate.apps.ConcentrateConfig',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

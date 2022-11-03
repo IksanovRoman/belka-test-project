@@ -17,16 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from concentrate.views import *
-from rest_framework import routers
-
-router = routers.SimpleRouter()
-router.register(r'month', MonthViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('concentrate/', ConcentrateAPIView.as_view()),
-    path('concentrate/create/', ConcentrateCreateAPIView.as_view()),
     path('concentrate/<int:pk>/', ConcentrateDetailAPIView.as_view()),
-    path('', include(router.urls)),
+
 
 ]
