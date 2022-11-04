@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Concentrate(models.Model):
@@ -8,6 +9,8 @@ class Concentrate(models.Model):
     aluminum = models.DecimalField(max_digits=4, decimal_places=2, default=0, verbose_name='Содержание алюминия')
     calcium = models.DecimalField(max_digits=4, decimal_places=2, default=0, verbose_name='Содержание кальция')
     sulfur = models.DecimalField(max_digits=4, decimal_places=2, default=0, verbose_name='Содержание серы')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+
 
     MONTHS = [
         ('Январь', 'Январь'),
@@ -28,6 +31,8 @@ class Concentrate(models.Model):
                              choices=MONTHS,
                              default="Январь",
                              )
+
+
 
     def __str__(self):
         return self.name

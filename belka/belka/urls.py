@@ -20,7 +20,10 @@ from concentrate.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/', include('rest_framework.urls')),
+    path('accounts/profile/', redirect),
     path('concentrate/', ConcentrateAPIView.as_view()),
-    path('concentrate/<int:pk>/', ConcentrateDetailAPIView.as_view()),
+    path('concentrate/<int:pk>/', ConcentrateUpdateAPIView.as_view()),
+    path('concentrate/delete/<int:pk>/', ConcentrateDeleteAPIView.as_view()),
     path('report/', ReportAPIView.as_view()),
 ]

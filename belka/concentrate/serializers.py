@@ -4,6 +4,8 @@ from concentrate.models import Concentrate
 
 
 class ConcentrateSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Concentrate
         fields = "__all__"
