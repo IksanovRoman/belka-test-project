@@ -13,8 +13,10 @@ from rest_framework.views import APIView
 from concentrate.permissions import *
 from concentrate.serializers import *
 
+
 def redirect(request):
     return HttpResponseRedirect("/concentrate/")
+
 
 class ConcentrateAPIView(generics.ListCreateAPIView):
     queryset = Concentrate.objects.all()
@@ -33,14 +35,15 @@ class ConcentrateDeleteAPIView(generics.RetrieveDestroyAPIView):
     serializer_class = ConcentrateSerializer
 
 
-class ReportAPIView(generics.ListCreateAPIView):
+class ReportAPIView(generics.ListAPIView):
     serializer_class = ConcentrateSerializer
 
     def get(self, request):
         month = request.GET.get("month")
         queryset = {}
         if month:
-            month.capitalize()
+            month = month.capitalize()
+            print(month)
             for x in ['iron', 'silicon', 'aluminum', 'calcium', 'sulfur']:
                 queryset[x] = Concentrate.objects.filter(month=month).aggregate(максимум=Max(x), минимум=Min(x),
                                                                                 среднее=Avg(x))

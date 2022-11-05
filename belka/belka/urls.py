@@ -20,6 +20,7 @@ from concentrate.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', redirect),
     path('auth/', include('rest_framework.urls')),
     path('accounts/profile/', redirect),
     path('concentrate/', ConcentrateAPIView.as_view()),
